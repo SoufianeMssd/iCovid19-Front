@@ -1,0 +1,33 @@
+.corona {
+    width: 57%;
+    padding: 13px 1px 13px 140px;
+    &__header {
+        display: flex;
+        align-items: center;
+        &__arrow {
+            width: 10px;
+            height: 10px;
+            margin-left: 13px;
+        }
+        &__flag {
+            width: 35px;
+            margin-left: 13px;
+        }
+        &__text1 {
+            font-size: 20px;
+            font-family: Roboto;
+            font-weight: bold;
+        }
+        &__text2 {
+            font-size: 20px;
+            font-family: Roboto;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    }
+    &__cover {
+        border-radius: 18px;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+        margin-top: 12px;
+    }
+}
