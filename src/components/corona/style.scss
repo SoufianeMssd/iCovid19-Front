@@ -15,19 +15,166 @@
         }
         &__text1 {
             font-size: 20px;
-            font-family: Roboto;
             font-weight: bold;
+            color: black;
         }
         &__text2 {
             font-size: 20px;
-            font-family: Roboto;
             font-weight: bold;
             margin-left: 10px;
+            color: black;
         }
     }
     &__cover {
         border-radius: 18px;
         box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
         margin-top: 12px;
+        width: 100%;
+    }
+    &__text {
+        font-size: 17px;
+        margin-top: 30px;
+        &__blue {
+            font-weight: bold;
+            color: rgb(0, 147, 213);
+        }
+        &__orange {
+            font-weight: bold;
+            color: rgb(216, 100, 34);
+        }
+    }
+    &__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        &__image {
+            width: 45px;
+        }
+        &__text {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    }
+    &__new {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 15px;
+        color: #18214d;
+        &__cases {
+            width: 30%;
+            border: 1.5px solid #ffa000;
+            height: 80px;
+            border-radius: 11px;
+            background-color: rgba(255,160,0,.05);
+            &__value {
+                padding-left: 45px;
+                font-weight: bold;
+                color: #ffa000;
+                font-size: 26px;
+            }
+            &__title {
+                padding-top: 10px;
+                padding-left: 19px;
+                font-weight: bold;
+                text-align: left;
+            }
+        }
+        &__recovered {
+            width: 30%;
+            border: 1.5px solid #75f257;
+            height: 80px;
+            border-radius: 11px;
+            background-color: rgba(117,242,87,.05);
+            &__value {
+                padding-left: 45px;
+                font-weight: bold;
+                color: #75f257;
+                font-size: 26px;
+            }
+            &__title {
+                padding-top: 10px;
+                padding-left: 19px;
+                font-weight: bold;
+                text-align: left;
+            }
+        }
+        &__deaths {
+            width: 30%;
+            border: 1.5px solid #fb5151;
+            height: 80px;
+            border-radius: 11px;
+            background-color: rgba(251,81,81,.05);
+            &__value {
+                padding-left: 45px;
+                font-weight: bold;
+                color: #fb5151;
+                font-size: 26px;
+            }
+            &__title {
+                padding-top: 10px;
+                padding-left: 19px;
+                font-weight: bold;
+                text-align: left;
+            }
+        }
+    }
+    &__charts {
+        margin-top: 50px;
+        &__header {
+            font-size: 25px;
+            font-weight: bold;
+            text-align: left;
+        }
+        &__cases {
+            display: flex;
+            width: 100%;
+            margin-top: 12px;
+            position: relative;
+            &__left {
+                position: absolute;
+                top: 0;
+                left: 0;
+                text-align: left;
+                &__number {
+                    font-size: 60px;
+                    font-weight: bold;
+                }
+                &__text {
+                    font-size: 24px;
+                }
+            }
+            &__right {
+                width: 100%;
+            }
+        }
+        &__deaths {
+            display: flex;
+            width: 100%;
+            margin-top: 12px;
+            position: relative;
+            &__left {
+                position: absolute;
+                top: 0;
+                left: 0;
+                text-align: left;
+                &__number {
+                    font-size: 60px;
+                    font-weight: bold;
+                }
+                &__text {
+                    font-size: 24px;
+                }
+            }
+            &__right {
+                width: 100%;
+            }
+        }
+        &__tip {
+            text-align: left;
+            font-size: 10px;
+        }
     }
 }

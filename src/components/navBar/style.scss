@@ -1,8 +1,12 @@
 .nav-bar {
     display: flex;
+    background-color: white;
     padding: 10px 140px;
     align-items: center;
     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 3;
     &__image {
         width: 40px;
     }
