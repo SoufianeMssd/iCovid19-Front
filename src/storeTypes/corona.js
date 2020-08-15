@@ -4,11 +4,11 @@ import type {RecordFactory, RecordOf} from 'immutable';
 import {List, Record} from 'immutable';
 
 export type CoronaProps = {
-  _id: string,
+  _id: String,
   cases: Number,
   deaths: Number,
   recovered: Number,
-  createAt: string
+  createdAt: string
 };
 
 export type CoronaType = RecordOf<CoronaProps>;
@@ -19,14 +19,14 @@ export const CoronaFactory: CoronaFactoryType = Record({
   'cases': 0,
   'deaths': 0,
   'recovered': 0,
-  'createAt': '',
+  'createdAt': '',
 });
 
-// Anomaly List
+// Corona List
 
 type CoronaListStoreProps = {
   status: 'loading' | 'error' | 'success' | 'idle',
-  error: string,
+  error: String,
   coronaList: List<CoronaType>,
 };
   
