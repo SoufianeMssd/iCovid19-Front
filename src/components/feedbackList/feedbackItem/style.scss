@@ -1,0 +1,63 @@
+.feedback {
+    &__item {
+        margin-bottom: 33px;
+        border-bottom: 1px solid rgba(230, 230, 230, 1);
+        &__header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 13px;
+            &__photo {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+            }
+            &__text{
+                margin-left: 10px;
+                font-size: 13px;
+                font-weight: 600;
+                text-align: left;
+                &__name {
+                    color: #292929;
+                }
+                &__date{
+                    color: rgba(117, 117, 117, 1);
+                    margin-top: 3px;
+                }
+            }
+        }
+        &__text {
+            text-align: left;
+            font-size: 14px;
+        }
+        &__footer {
+            text-align: left;
+            &__heart{
+                cursor: pointer;
+                height: 50px;
+                width: 50px;
+                background-image:url( 'https://abs.twimg.com/a/1446542199/img/t1/web_heart_animation.png');
+                background-position: left;
+                background-repeat:no-repeat;
+                background-size:2900%;
+                position: relative;
+                right: 17px;
+                &:hover{
+                    // background-position: right;
+                    border-radius: 50%;
+                    background-color: #ff00001c;
+                }
+                &__animating {
+                    animation: heart-burst .8s steps(28) 1;
+                }
+                &__clicked{
+                    background-position: right;
+                }
+            }
+        }
+    }
+}
+
+@keyframes heart-burst {
+    from {background-position:left;}
+    to { background-position:right;}
+}

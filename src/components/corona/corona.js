@@ -15,6 +15,16 @@ import coverIcon from '../../resources/images/ppl-masks.jpeg';
 import clockIcon from '../../resources/images/clockY.png';
 import classNames from 'classnames';
 
+const coronaDeathsData = (coronaList: List<CoronaType>, isDaily) => (coronaList.map((element, index) => {
+  if (index === 0 || !isDaily) return element.deaths;
+  return element.deaths - coronaList[index - 1].deaths;
+}));
+
+const coronaCasesData = (coronaList: List<CoronaType>, isDaily) => (coronaList.map((element, index) => {
+  if (index === 0 || !isDaily) return element.cases;
+  return element.cases - coronaList[index - 1].cases;
+}));
+
 type Props = {coronaList: List<CoronaType>};
 
 const Corona = ({coronaList}:Props) => {
@@ -84,11 +94,8 @@ const Corona = ({coronaList}:Props) => {
         <div className='corona__charts__cases__right'>
           <HighchartsReact
             highcharts={Highcharts}
-            options={highchartsCasesConfig(coronaList.map((element, index) => {
-              if (index === 0 || !daily) return element.cases;
-              return element.cases - coronaList[index - 1].cases;
-            }),
-            coronaList.map(item => moment.utc(item.createAt).format('D MMM')))}
+            options={highchartsCasesConfig(coronaCasesData(coronaList, daily),
+              coronaList.map(item => moment.utc(item.createAt).format('D MMM')))}
           />
         </div>
       </div>
@@ -101,11 +108,8 @@ const Corona = ({coronaList}:Props) => {
         <div className='corona__charts__deaths__right'>
           <HighchartsReact
             highcharts={Highcharts}
-            options={highchartsDeathsConfig(coronaList.map((element, index) => {
-              if (index === 0 || !daily) return element.deaths;
-              return element.deaths - coronaList[index - 1].deaths;
-            }),
-            coronaList.map(item => moment.utc(item.createAt).format('D MMM')))}
+            options={highchartsDeathsConfig(coronaDeathsData(coronaList, daily),
+              coronaList.map(item => moment.utc(item.createAt).format('D MMM')))}
           />
         </div>
       </div>

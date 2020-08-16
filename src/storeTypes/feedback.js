@@ -40,9 +40,9 @@ export const FeedbackListStoreFactory: FeedbackListStoreFactoryType = Record({
 // add Feedback
 
 type AddFeedbackStoreProps = {
-    status: 'loading' | 'error' | 'success' | 'idle',
-    error: String,
-  };
+  status: 'loading' | 'error' | 'success' | 'idle',
+  error: String,
+};
     
 export type AddFeedbackStoreType = RecordOf<AddFeedbackStoreProps>;
 export type AddFeedbackStoreFactoryType = RecordFactory<AddFeedbackStoreProps>;

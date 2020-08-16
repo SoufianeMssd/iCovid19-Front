@@ -8,7 +8,7 @@ export type CoronaProps = {
   cases: Number,
   deaths: Number,
   recovered: Number,
-  createdAt: string
+  createAt: string
 };
 
 export type CoronaType = RecordOf<CoronaProps>;
@@ -19,7 +19,7 @@ export const CoronaFactory: CoronaFactoryType = Record({
   'cases': 0,
   'deaths': 0,
   'recovered': 0,
-  'createdAt': '',
+  'createAt': '',
 });
 
 // Corona List

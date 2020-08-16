@@ -18,11 +18,6 @@ class CoronaContainer extends React.Component<Props> {
     fetchCoronaList();
   }
 
-  onResetCurrentPage = () => {
-    this.setState({'currentPage': 0});
-  }
-
-
   render () {
     const {coronaList} = this.props;
     return (
