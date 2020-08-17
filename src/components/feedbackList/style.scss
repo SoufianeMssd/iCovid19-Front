@@ -1,5 +1,5 @@
 .feedback {
-    width: calc(38% - 208px);
+    width: calc(38% - 168px);
     padding: 18px 34px;
 
     &__title {
@@ -14,6 +14,7 @@
         box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 8px;
         border-radius: 5px;
         margin-bottom: 35px;
+        position: relative;
         &__header {
             display: flex;
             align-items: center;
@@ -54,8 +55,33 @@
                 font-weight: bold;
                 outline: none;
                 cursor: pointer;
+                &:disabled{
+                    cursor: default;
+                    opacity: 0.5;
+                }
             }
         }
     }
     &__list {}
+}
+
+.my-enter {
+    opacity: 0.01;
+    transform: translate(-40px, 0)
+}
+
+.my-active-enter{
+    opacity: 1;
+    transform: translate(0, 0);
+    transition: all 500ms ease-in;
+}
+.my-exit{
+    opacity: 1;
+    transform: translate(0, 0)
+}
+
+.my-active-exit{
+    opacity: 0.01;
+    transform: translate(40px, 0);
+    transition: all 500ms ease-in;
 }

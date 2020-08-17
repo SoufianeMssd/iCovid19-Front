@@ -7,7 +7,7 @@ export type FeedbackProps = {
   _id: String,
   message: String,
   likes: List<String>,
-  createdAt: string
+  createdAt: String,
 };
 
 export type FeedbackType = RecordOf<FeedbackProps>;
@@ -48,6 +48,21 @@ export type AddFeedbackStoreType = RecordOf<AddFeedbackStoreProps>;
 export type AddFeedbackStoreFactoryType = RecordFactory<AddFeedbackStoreProps>;
 
 export const AddFeedbackStoreFactory: AddFeedbackStoreFactoryType = Record({
+  'status': 'idle',
+  'error': '',
+});
+
+// delete Feedback
+
+type DeleteFeedbackStoreProps = {
+  status: 'loading' | 'error' | 'success' | 'idle',
+  error: String,
+};
+    
+export type DeleteFeedbackStoreType = RecordOf<DeleteFeedbackStoreProps>;
+export type DeleteFeedbackStoreFactoryType = RecordFactory<DeleteFeedbackStoreProps>;
+
+export const DeleteFeedbackStoreFactory: DeleteFeedbackStoreFactoryType = Record({
   'status': 'idle',
   'error': '',
 });

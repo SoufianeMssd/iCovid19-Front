@@ -45,38 +45,73 @@ export const GetFeedbackListError = (error: string): GetFeedbackListErrorAction 
 /* feedback Submit */
 
 // Start
-export const ADD_FEEDBBACK = 'ADD_FEEDBBACK';
+export const ADD_FEEDBACK = 'ADD_FEEDBACK';
 
 export type AddFeedbackAction = {
-  type: 'ADD_FEEDBBACK'
+  type: 'ADD_FEEDBACK'
 }
 
-export const AddFeedback = (): AddFeedbackAction => ({'type': ADD_FEEDBBACK});
+export const AddFeedback = (): AddFeedbackAction => ({'type': ADD_FEEDBACK});
 
 
 // Success
-export const ADD_FEEDBBACK_SUCCESS = 'ADD_FEEDBBACK_SUCCESS';
+export const ADD_FEEDBACK_SUCCESS = 'ADD_FEEDBACK_SUCCESS';
 
 export type AddFeedbackSuccessAction = {
-  type: 'ADD_FEEDBBACK_SUCCESS',
-  feedbacklist: List<FeedbackType>
+  type: 'ADD_FEEDBACK_SUCCESS'
 }
 
-export const AddFeedbackSuccess = (feedbackList: List<FeedbackType>): AddFeedbackSuccessAction => ({
-  'type': ADD_FEEDBBACK_SUCCESS,
-  feedbackList
+export const AddFeedbackSuccess = (): AddFeedbackSuccessAction => ({
+  'type': ADD_FEEDBACK_SUCCESS
 });
 
 
 // Error
-export const ADD_FEEDBBACK_ERROR = 'ADD_FEEDBBACK_ERROR';
+export const ADD_FEEDBACK_ERROR = 'ADD_FEEDBACK_ERROR';
 
 export type AddFeedbackErrorAction = {
-  type: 'ADD_FEEDBBACK_ERROR',
+  type: 'ADD_FEEDBACK_ERROR',
   error: string
 }
 
 export const AddFeedbackError = (error: string): AddFeedbackErrorAction => ({
-  'type': ADD_FEEDBBACK_ERROR,
+  'type': ADD_FEEDBACK_ERROR,
+  error
+});
+
+/* feedback delete */
+
+// Start
+export const DELETE_FEEDBACK = 'DELETE_FEEDBACK';
+
+export type DeleteFeedbackAction = {
+  type: 'DELETE_FEEDBACK'
+}
+
+export const DeleteFeedback = (): DeleteFeedbackAction => ({'type': DELETE_FEEDBACK});
+
+
+// Success
+export const DELETE_FEEDBACK_SUCCESS = 'DELETE_FEEDBACK_SUCCESS';
+
+export type DeleteFeedbackSuccessAction = {
+  type: 'DELETE_FEEDBACK_SUCCESS'
+}
+
+export const DeleteFeedbackSuccess = (): DeleteFeedbackSuccessAction => ({
+  'type': DELETE_FEEDBACK_SUCCESS
+});
+
+
+// Error
+export const DELETE_FEEDBACK_ERROR = 'DELETE_FEEDBACK_ERROR';
+
+export type DeleteFeedbackErrorAction = {
+  type: 'DELETE_FEEDBACK_ERROR',
+  error: string
+}
+
+export const DeleteFeedbackError = (error: string): DeleteFeedbackErrorAction => ({
+  'type': DELETE_FEEDBACK_ERROR,
   error
 });

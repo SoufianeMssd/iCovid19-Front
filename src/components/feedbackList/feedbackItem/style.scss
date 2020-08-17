@@ -5,23 +5,67 @@
         &__header {
             display: flex;
             align-items: center;
+            min-height: 40px;
             margin-bottom: 13px;
-            &__photo {
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-            }
-            &__text{
-                margin-left: 10px;
-                font-size: 13px;
-                font-weight: 600;
-                text-align: left;
-                &__name {
-                    color: #292929;
+            justify-content: space-between;
+            &__left{
+                display: flex;
+                align-items: center;
+                &__photo {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
                 }
-                &__date{
-                    color: rgba(117, 117, 117, 1);
-                    margin-top: 3px;
+                &__text{
+                    margin-left: 10px;
+                    font-size: 13px;
+                    font-weight: 600;
+                    text-align: left;
+                    &__name {
+                        color: #292929;
+                    }
+                    &__date{
+                        color: rgba(117, 117, 117, 1);
+                        margin-top: 3px;
+                    }
+                }
+            } 
+            &__right{
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &:hover{
+                    background-color: #ff00001c
+                }
+            }
+            &__confirm {
+                display: flex;
+                align-items: center;
+                &__text {
+                    font-size: 12px;
+                    font-weight: bold;
+                    margin-right: 4px;
+                }
+                &__cancel {
+                    border: 1px;
+                    background: white;
+                    font-size: 12px;
+                    margin-right: 4px;
+                    cursor: pointer;
+                    outline: none;
+                }
+                &__confirm {
+                    border: 1px;
+                    font-size: 12px;
+                    color: white;
+                    background-color: #cc0102;
+                    border-radius: 4px;
+                    padding: 5px;
+                    cursor: pointer;
+                    outline: none;
                 }
             }
         }
@@ -35,7 +79,7 @@
                 cursor: pointer;
                 height: 50px;
                 width: 50px;
-                background-image:url( 'https://abs.twimg.com/a/1446542199/img/t1/web_heart_animation.png');
+                background-image:url('../../../resources/images/heart.png');
                 background-position: left;
                 background-repeat:no-repeat;
                 background-size:2900%;

@@ -4,12 +4,19 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import FeedbackList from '../components/feedbackList';
 import type {FeedbackType} from '../storeTypes/feedback';
+import type {UserType} from '../storeTypes/user';
 import fetchFeedbackList from '../middleware/feedbackList';
+import addFeedback from '../middleware/addFeedback';
+import deleteFeedback from '../middleware/deleteFeedback';
 import {List} from 'immutable';
 
 type Props = {
   feedbackList: List<FeedbackType>,
-  fetchFeedbackList: Function
+  fetchFeedbackList: Function,
+  addFeedback: Function,
+  addFeedbackStatus: String,
+  deleteFeedback: Function,
+  sessionUser: UserType
 }
 
 class FeedbackContainer extends React.Component<Props> {
@@ -19,15 +26,29 @@ class FeedbackContainer extends React.Component<Props> {
   }
 
   render () {
-    const {feedbackList} = this.props;
+    const {feedbackList, addFeedback, addFeedbackStatus, deleteFeedback, sessionUser} = this.props;
     return (
-      <FeedbackList feedbackList={feedbackList} />
+      <FeedbackList
+        addFeedback={addFeedback}
+        addFeedbackStatus={addFeedbackStatus}
+        deleteFeedback={deleteFeedback}
+        feedbackList={feedbackList}
+        sessionUser={sessionUser}
+      />
     );
   }
 }
 
-const mapStateToProps = (state) => ({'feedbackList': state.feedbackList.get('feedbackList')});
+const mapStateToProps = (state) => ({
+  'feedbackList': state.feedbackList.get('feedbackList'),
+  'addFeedbackStatus': state.addFeedback.get('status'),
+  'sessionUser': state.userLog.get('user')
+});
 
-const mapDispatchToProps = ({'fetchFeedbackList': fetchFeedbackList});
+const mapDispatchToProps = ({
+  fetchFeedbackList,
+  addFeedback,
+  deleteFeedback
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeedbackContainer);
