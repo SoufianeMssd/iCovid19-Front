@@ -8,6 +8,7 @@ import type {UserType} from '../storeTypes/user';
 import fetchFeedbackList from '../middleware/feedbackList';
 import addFeedback from '../middleware/addFeedback';
 import deleteFeedback from '../middleware/deleteFeedback';
+import updateFeedback from '../middleware/updateFeedback';
 import {List} from 'immutable';
 
 type Props = {
@@ -16,7 +17,8 @@ type Props = {
   addFeedback: Function,
   addFeedbackStatus: String,
   deleteFeedback: Function,
-  sessionUser: UserType
+  sessionUser: UserType,
+  updateFeedback: Function
 }
 
 class FeedbackContainer extends React.Component<Props> {
@@ -26,7 +28,7 @@ class FeedbackContainer extends React.Component<Props> {
   }
 
   render () {
-    const {feedbackList, addFeedback, addFeedbackStatus, deleteFeedback, sessionUser} = this.props;
+    const {feedbackList, addFeedback, addFeedbackStatus, deleteFeedback, sessionUser, updateFeedback} = this.props;
     return (
       <FeedbackList
         addFeedback={addFeedback}
@@ -34,6 +36,7 @@ class FeedbackContainer extends React.Component<Props> {
         deleteFeedback={deleteFeedback}
         feedbackList={feedbackList}
         sessionUser={sessionUser}
+        updateFeedback={updateFeedback}
       />
     );
   }
@@ -48,7 +51,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = ({
   fetchFeedbackList,
   addFeedback,
-  deleteFeedback
+  deleteFeedback,
+  updateFeedback
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeedbackContainer);

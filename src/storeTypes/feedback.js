@@ -2,12 +2,15 @@
 
 import type {RecordFactory, RecordOf} from 'immutable';
 import {List, Record} from 'immutable';
+import type {UserType} from './user';
+import {UserFactory} from './user';
 
 export type FeedbackProps = {
   _id: String,
   message: String,
   likes: List<String>,
   createdAt: String,
+  owner: UserType
 };
 
 export type FeedbackType = RecordOf<FeedbackProps>;
@@ -18,6 +21,7 @@ export const FeedbackFactory: FeedbackFactoryType = Record({
   'message': '',
   'likes': List(),
   'createdAt': '',
+  'owner': UserFactory({})
 });
 
 // Feedback List

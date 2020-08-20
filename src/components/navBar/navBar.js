@@ -1,7 +1,8 @@
 // @flow
 import * as React from 'react';
 import './style.scss';
-import covidIcon from '../../resources/images/covid19.png';
+import type {UserType} from '../../storeTypes/user';
+import covidIcon from '../../resources/images/covid19Green.png';
 import {ClickAwayListener} from '@material-ui/core';
 import firebase from 'firebase';
 

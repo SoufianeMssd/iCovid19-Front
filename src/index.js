@@ -9,7 +9,7 @@ import configureStore from './store';
 import './index.css';
 import App from './App';
 
-const store = configureStore()
+export const store = configureStore()
 
 render(
   <Provider store={store}>
