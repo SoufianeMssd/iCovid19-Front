@@ -1,13 +1,17 @@
 /* eslint-disable no-magic-numbers */
 // @flow
 import * as React from 'react';
+import {useState, useEffect} from 'react';
 import classNames from 'classnames';
-import type {FeedbackType} from '../../storeTypes/feedback';
-import type {UserType} from '../../storeTypes/user';
+import Linkify from 'react-linkify';
+
+import type {FeedbackType} from '../../../storeTypes/feedback';
+import type {UserType} from '../../../storeTypes/user';
 import DeleteIcon from '@material-ui/icons/Delete';
 import {makeStyles} from '@material-ui/core/styles';
 import {Tooltip} from '@material-ui/core';
 import moment from 'moment';
+import defaultUserIcon from '../../../resources/images/user.png';
 
 import './style.scss';
 
@@ -27,15 +31,40 @@ type Props = {
   deleteFeedback: Function,
   updateFeedback: Function,
   sessionUser: UserType,
+  setAuthenticate: Function
 };
 
-const FeedbackItem = ({feedback, deleteFeedback, updateFeedback, sessionUser}:Props) => {
+const FeedbackItem = ({feedback, deleteFeedback, updateFeedback, sessionUser, setAuthenticate}:Props) => {
   const classes = useStyles();
 
-  const [animated, isAnimated] = React.useState(false);
-  const [clicked, isClicked] = React.useState(false);
-  const [confirmDelete, setConfirmDelete] = React.useState(false);
+  useEffect(() => {
+    isClicked(feedback.likes.includes(sessionUser.email))
+  }, [sessionUser]);
+
+  const [animated, isAnimated] = useState(false);
+  const [clicked, isClicked] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+
+  const onLike = () => {
+    if (sessionUser) {
+      if (clicked) {
+        const index = feedback.likes.indexOf(sessionUser.email);
+        feedback.likes.splice(index, 1);
+      } else {
+        isAnimated(true);
+        feedback.likes.push(sessionUser.email);
+      }
+      isClicked(!clicked);
+      updateFeedback(feedback._id, sessionUser);
+    } else {
+      setAuthenticate(true);
+    }
+  }
+
+  const onDefaultImg = (event) => event.target.src = defaultUserIcon;
+
   const {owner} = feedback;
+
   return (
     <div className='feedback__item' key={feedback._id}>
       <div className='feedback__item__header'>
@@ -43,6 +72,7 @@ const FeedbackItem = ({feedback, deleteFeedback, updateFeedback, sessionUser}:Pr
           <img
             alt='feedback__item__header__left__photo'
             className='feedback__item__header__left__photo'
+            onError={onDefaultImg}
             src={owner.photoURL}
           />
           <div className='feedback__item__header__left__text'>
@@ -70,29 +100,37 @@ const FeedbackItem = ({feedback, deleteFeedback, updateFeedback, sessionUser}:Pr
           >Yes</button>
         </div>}
       </div>
-      <div className='feedback__item__text' >{feedback.message}</div>
-      {sessionUser && <div className='feedback__item__footer'>
-        <Tooltip
-          placement='right-end'
-          title='like'
-        >
-          <div
-            className={classNames(
-              'feedback__item__footer__heart',
-              {
-                'feedback__item__footer__heart__animating': animated,
-                'feedback__item__footer__heart__clicked': clicked
-              })}
-            onClick={() => {
-              !clicked && isAnimated(true);
-              isClicked(!clicked);
-              updateFeedback(feedback._id, sessionUser._id)
-            }
-            }
-            onAnimationEnd={() => isAnimated(false)}
-          />
-        </Tooltip>
-      </div>}
+      <div className='feedback__item__text' ><Linkify>{feedback.message}</Linkify></div>
+      <div className='feedback__item__footer'>
+        <div  className='feedback__item__footer__wrap'>
+          <Tooltip
+            arrow
+            title='like'
+          >
+            <div
+              className='feedback__item__footer__wrap__heart'
+              onClick={onLike}
+            >
+              <div
+                className={classNames(
+                  'feedback__item__footer__wrap__heart__icon',
+                  {
+                    'feedback__item__footer__wrap__heart__icon__animating': animated,
+                    'feedback__item__footer__wrap__heart__icon__clicked': 
+                    (clicked || feedback.likes.includes(sessionUser.email))
+                  })}
+                onAnimationEnd={() => isAnimated(false)}
+              />
+            </div>
+          </Tooltip>
+          <div className={classNames(
+            'feedback__item__footer__wrap__number',
+            {
+              'feedback__item__footer__wrap__number__clicked': (clicked || feedback.likes.includes(sessionUser.email))
+            })}
+          >{feedback.likes.length}</div>
+        </div>
+      </div>
     </div>);
 };
 

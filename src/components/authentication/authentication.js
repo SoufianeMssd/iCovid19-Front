@@ -32,7 +32,8 @@ const Authentication =({open, onClose}:Props) => (
           <Tooltip title='close'><CloseIcon className="modal__auth__close" onClick={() => onClose()} /></Tooltip>
           <div className="modal__auth__body">
             <div className="modal__auth__body__header">Welcome.</div>
-            <div className="modal__auth__body__msg">Sign in to interact with comments <span role='img'> 😊</span>.</div>
+            <div className="modal__auth__body__msg">
+              Sign in to interact with comments <span role="img" aria-label="heart"> 😊</span>.</div>
             <StyledFirebaseAuth
               className="modal__auth__body__btns"
               uiConfig={uiConfig}

@@ -6,7 +6,7 @@ import CoronaContainer from './containers/coronaContainer';
 import FeedbackContainer from './containers/feedbackContainer';
 import Footer from './components/footer';
 
-
+// #M_N
 const App = () => (
   <div className="App">
     <NavBarContainer />

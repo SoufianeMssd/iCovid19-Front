@@ -28,13 +28,15 @@ class FeedbackContainer extends React.Component<Props> {
   }
 
   render () {
-    const {feedbackList, addFeedback, addFeedbackStatus, deleteFeedback, sessionUser, updateFeedback} = this.props;
+    const {feedbackList, addFeedback, addFeedbackStatus, deleteFeedback,
+      sessionUser, updateFeedback, fetchFeedbackList} = this.props;
     return (
       <FeedbackList
         addFeedback={addFeedback}
         addFeedbackStatus={addFeedbackStatus}
         deleteFeedback={deleteFeedback}
         feedbackList={feedbackList}
+        fetchFeedbackList={fetchFeedbackList}
         sessionUser={sessionUser}
         updateFeedback={updateFeedback}
       />

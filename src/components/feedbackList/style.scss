@@ -2,6 +2,25 @@
     width: calc(38% - 168px);
     padding: 18px 34px;
 
+    &__more {
+        width: 100%;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #0093d5;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 6px;
+        outline: none;
+        &:hover {
+            border: 1px solid #cccccc;
+            cursor: pointer;
+        }
+        &:disabled {
+            display: none;
+        }
+    }
+
     &__title {
         font-size: 20px;
         font-weight: bold;

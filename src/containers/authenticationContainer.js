@@ -27,11 +27,9 @@ class AuthenticationContainer extends React.Component<Props> {
     firebase.auth().onAuthStateChanged(user => {
       if (user && flag) {
         logIn({email: user.email, photoURL: user.photoURL, name: user.displayName});
-        console.log('SignedIn : ', user);
         flag = false;
       } else if (!user) {
         logOut();
-        console.log('SignedIn : ', user);
       }
     })
   }

@@ -51,17 +51,23 @@
                 }
                 &__cancel {
                     border: 1px;
-                    background: white;
+                    background: #0094d4;
+                    color: white;
                     font-size: 12px;
                     margin-right: 4px;
                     cursor: pointer;
                     outline: none;
+                    width: 31px;
+                    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 8px;
+                    border-radius: 4px;
+                    padding: 5px;
                 }
                 &__confirm {
-                    border: 1px;
+                    border: 1px solid #abb8c2;
                     font-size: 12px;
-                    color: white;
-                    background-color: #cc0102;
+                    color: #4b4b4b;
+                    background-color: white;
+                    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 8px;
                     border-radius: 4px;
                     padding: 5px;
                     cursor: pointer;
@@ -74,29 +80,51 @@
             font-size: 14px;
         }
         &__footer {
-            text-align: left;
-            &__heart{
-                cursor: pointer;
-                height: 50px;
-                width: 50px;
-                background-image:url('../../../resources/images/heart.png');
-                background-position: left;
-                background-repeat:no-repeat;
-                background-size:2900%;
-                position: relative;
-                right: 17px;
-                &:hover{
-                    // background-position: right;
-                    border-radius: 50%;
-                    background-color: #ff00001c;
+            &__wrap {
+                text-align: left;
+                display: flex;
+                align-items: center;
+                margin: 6px 0px;
+                &__heart{
+                    position: relative;
+                    right: 13px;
+                    height: 36px;
+                    width: 36px;
+                    &__icon {
+                        cursor: pointer;
+                        height: 50px;
+                        width: 50px;
+                        background-image:url('../../../resources/images/heart.png');
+                        background-position: left;
+                        background-repeat:no-repeat;
+                        background-size:2900%;
+                        position: relative;
+                        right: 7px;
+                        bottom: 6px;
+                        
+                        &__animating {
+                            animation: heart-burst .8s steps(28) 1;
+                        }
+                        &__clicked{
+                            background-position: right;
+                        }
+                    }
+                    &:hover{
+                        // background-position: right;
+                        border-radius: 50%;
+                        background-color: #ff00001c;
+                    }
                 }
-                &__animating {
-                    animation: heart-burst .8s steps(28) 1;
-                }
-                &__clicked{
-                    background-position: right;
+                &__number {
+                    position: relative;
+                    font-size: 12px;
+                    color: #8c8b8b;
+                    &__clicked{
+                        color: #d60505;
+                    }
                 }
             }
+            
         }
     }
 }

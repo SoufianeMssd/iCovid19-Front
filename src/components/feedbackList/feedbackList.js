@@ -2,15 +2,14 @@
 // @flow
 import * as React from 'react';
 import {useEffect} from 'react';
-import {store} from '../../index.js';
 import {List} from 'immutable';
+import ShowMore from 'react-show-more-list';
 import type {FeedbackType} from '../../storeTypes/feedback';
 import type {UserType} from '../../storeTypes/user';
 import FeedbackItem from './feedbackItem';
 import {FeedbackFactory} from '../../storeTypes/feedback';
-import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import AuthenticationContainer from '../../containers/authenticationContainer';
-import fetchFeedbackList from '../../middleware/feedbackList';
+import defaultUserIcon from '../../resources/images/user.png';
 
 import './style.scss';
 
@@ -20,22 +19,26 @@ type Props = {
   addFeedbackStatus: String,
   deleteFeedback: Function,
   sessionUser: UserType,
-  updateFeedback: Function
+  updateFeedback: Function,
+  fetchFeedbackList: Function
 };
 
 const Feedback = ({
-  feedbackList, addFeedback, addFeedbackStatus, deleteFeedback, sessionUser, updateFeedback
+  feedbackList, addFeedback, addFeedbackStatus,
+  deleteFeedback, sessionUser, updateFeedback,
+  fetchFeedbackList
 }:Props) => {
   const [comment, setComment] = React.useState('');
   const [authenticate, setAuthenticate] = React.useState(false);
   
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log('this is working');
-      store.dispatch(fetchFeedbackList());
+      fetchFeedbackList();
     }, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  const onDefaultImg = (event) => event.target.src = defaultUserIcon;
 
   return (<div className='feedback'>
     <AuthenticationContainer
@@ -48,6 +51,7 @@ const Feedback = ({
         <img
           alt='feedback__card__header__photo'
           className='feedback__card__header__photo'
+          onError={onDefaultImg}
           src={sessionUser.photoURL}
         />
         <div className='feedback__card__header__name'>
@@ -73,30 +77,37 @@ const Feedback = ({
         >Comment</button>
       </div> }
     </div>
-    <div className='feedback__list'>
-      <TransitionGroup>
-        {feedbackList.map((feedback) => 
-          <CSSTransition
-            key={feedback}
-            timeout={500} classNames={{
-              enter: 'my-enter',
-              enterActive: 'my-active-enter',
-              exit: 'my-exit',
-              exitActive: 'my-active-exit'
-            }}
+    <ShowMore
+      items={feedbackList}
+      by={3}
+    >
+      {({
+        current,
+        onMore,
+      }) => (
+        <React.Fragment>
+          <div className='feedback__list'>
+            {current.map((feedback) => 
+              <FeedbackItem
+                deleteFeedback={deleteFeedback}
+                feedback={feedback}
+                key={feedback._id}
+                sessionUser={sessionUser}
+                setAuthenticate={setAuthenticate}
+                updateFeedback={updateFeedback}
+              />
+            )}
+          </div>
+          <button
+            className='feedback__more'
+            disabled={!onMore}
+            onClick={() => { !!onMore && onMore(); }}
           >
-            <FeedbackItem
-              deleteFeedback={deleteFeedback}
-              feedback={feedback}
-              key={feedback._id}
-              sessionUser={sessionUser}
-              updateFeedback={updateFeedback}
-            />
-          </CSSTransition>
-        )}
-      </TransitionGroup>
-      
-    </div>
+            Show more
+          </button>
+        </React.Fragment>
+      )}
+    </ShowMore>
   </div>);
 };
 

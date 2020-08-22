@@ -38,8 +38,10 @@ const Corona = ({coronaList}:Props) => {
     </div>
     <img alt='corona__cover' className='corona__cover' src={coverIcon} />
     <div className='corona__text'>In <span className='corona__text__blue'>Morocco</span>, from 
-      <span className='corona__text__blue'> Mar 03</span> to 
-      <span className='corona__text__blue'> {moment().format('LLLL')}</span>, there have been 
+      <span className='corona__text__blue'> Mar 03</span>{' to '}
+      <span className='corona__text__blue'> 
+        {coronaList.length > 0 && moment(coronaList[coronaList.length - 1].createAt).format('LLLL')}
+      </span>, there have been 
       <span className='corona__text__blue'> {`${coronaList.length > 0 ? 
         coronaList[coronaList.length - 1].cases : '#####'} confirmed cases`}</span> of COVID-19 with 
       <span className='corona__text__orange'> {`${coronaList.length > 0 ? 
