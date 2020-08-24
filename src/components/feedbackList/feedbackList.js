@@ -100,7 +100,7 @@ const Feedback = ({
           </div>
           <button
             className='feedback__more'
-            disabled={!onMore}
+            disabled={!onMore || feedbackList.size === 0}
             onClick={() => { !!onMore && onMore(); }}
           >
             Show more
