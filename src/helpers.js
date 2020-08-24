@@ -7,7 +7,7 @@ export const linkedIn = 'https://linkedin.com/in/soufianemssd/';
 export const twitter = 'https://twitter.com/SoufianeMssd';
 
 // external api
-export const extURL = 'https://icovid19.herokuapp.com/'
+export const extURL = 'https://icovid19.herokuapp.com'
 
 // highcharts configs
 export const highchartsCasesConfig = (cases: Number, date: String) => ({
