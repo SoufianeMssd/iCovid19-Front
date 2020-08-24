@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react';
 import './style.scss';
-import linkedinIcon from '../../resources/images/linkedIn.png';
-import facebookIcon from '../../resources/images/facebook.png';
-import twitterIcon from '../../resources/images/twitter.png';
+import linkedinIcon from '../../images/linkedIn.png';
+import facebookIcon from '../../images/facebook.png';
+import twitterIcon from '../../images/twitter.png';
 import {facebook, linkedIn, twitter} from '../../helpers';
 
 const Footer =() => (<div className="footer">

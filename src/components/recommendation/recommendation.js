@@ -4,14 +4,14 @@ import './style.scss';
 import {Modal, Tooltip} from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import {ClickAwayListener} from '@material-ui/core';
-import recommendIcon from '../../resources/images/recommend2.png';
-import washIcon from '../../resources/images/wash.png';
-import maskICon from '../../resources/images/mask.png';
-import homeICon from '../../resources/images/home.png';
-import handVirus from '../../resources/images/handVirus.png';
-import elbowIcon from '../../resources/images/elbow.png';
-import doctorIcon from '../../resources/images/doctor.png';
-import distanceIcon from '../../resources/images/distance.png';
+import recommendIcon from '../../images/recommend2.png';
+import washIcon from '../../images/wash.png';
+import maskICon from '../../images/mask.png';
+import homeICon from '../../images/home.png';
+import handVirus from '../../images/handVirus.png';
+import elbowIcon from '../../images/elbow.png';
+import doctorIcon from '../../images/doctor.png';
+import distanceIcon from '../../images/distance.png';
 
 
 type Props = {

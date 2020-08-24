@@ -11,7 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import {makeStyles} from '@material-ui/core/styles';
 import {Tooltip} from '@material-ui/core';
 import moment from 'moment';
-import defaultUserIcon from '../../../resources/images/user.png';
+import defaultUserIcon from '../../../images/user.png';
 
 import './style.scss';
 

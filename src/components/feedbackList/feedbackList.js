@@ -9,7 +9,7 @@ import type {UserType} from '../../storeTypes/user';
 import FeedbackItem from './feedbackItem';
 import {FeedbackFactory} from '../../storeTypes/feedback';
 import AuthenticationContainer from '../../containers/authenticationContainer';
-import defaultUserIcon from '../../resources/images/user.png';
+import defaultUserIcon from '../../images/user.png';
 
 import './style.scss';
 

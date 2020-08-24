@@ -9,10 +9,10 @@ import type {CoronaType} from '../../storeTypes/corona';
 
 import {highchartsDeathsConfig, highchartsCasesConfig} from '../../helpers';
 import './style.scss';
-import arrowIcon from '../../resources/images/arrow-right.png';
-import flagIcon from '../../resources/images/flagMorocco.png';
-import coverIcon from '../../resources/images/ppl-masks.jpeg';
-import clockIcon from '../../resources/images/clockY.png';
+import arrowIcon from '../../images/arrow-right.png';
+import flagIcon from '../../images/flagMorocco.png';
+import coverIcon from '../../images/ppl-masks.jpeg';
+import clockIcon from '../../images/clockY.png';
 import classNames from 'classnames';
 
 const coronaDeathsData = (coronaList: List<CoronaType>, isDaily) => (coronaList.map((element, index) => {
