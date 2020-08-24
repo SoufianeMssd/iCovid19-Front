@@ -1,5 +1,6 @@
 /* eslint-disable no-magic-numbers */
 import React from 'react';
+
 import './App.css';
 import NavBarContainer from './containers/navBarContainer';
 import CoronaContainer from './containers/coronaContainer';

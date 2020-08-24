@@ -1,6 +1,8 @@
 
 import * as serviceWorker from './serviceWorker';
 
+import HttpsRedirect from 'react-https-redirect';
+
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
@@ -13,7 +15,9 @@ export const store = configureStore()
 
 render(
   <Provider store={store}>
-    <App />
+    <HttpsRedirect>
+      <App />
+    </HttpsRedirect>
   </Provider>,
   document.getElementById('root')
 )
